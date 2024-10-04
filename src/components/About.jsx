@@ -1,6 +1,6 @@
 import React from "react";
 
-const About = () => {
+function About () {
   return (
     <section className="bg-white py-20">
       <div className="container mx-auto px-4">
