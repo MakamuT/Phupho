@@ -11,6 +11,16 @@ import Signup from "./components/Signup";
 import Team from "./components/Team";
 import Testimonial from "./components/Testimonial";
 
+// Import your new learning platform components
+import LearningPathways from "./components/student/LearningPathways";
+import LearningPathwayDetail from "./components/student/LearningPathwayDetail";
+import LessonDetail from "./components/student/LessonDetail";
+import Enrollment from "./components/student/Enrollment";
+import ProgressDashboard from "./components/student/ProgressDashboard";
+import RewardsBadges from "./components/student/RewardsBadges";
+
+import CreateLesson from "./components/instructor/CreateLesson";
+
 // Define the main App component
 function App() {
   return (
@@ -41,6 +51,16 @@ function App() {
 
         {/* Route for the testimonial page */}
         <Route path="/testimonial" element={<Testimonial />} />
+
+        {/* Learning platform routes */}
+        <Route path="/learning-pathways" element={<LearningPathways />} />
+        <Route path="/pathways/:id" element={<LearningPathwayDetail />} />
+        <Route path="/lessons/:id" element={<LessonDetail />} />
+        <Route path="/enrollment/:id" element={<Enrollment />} />
+        <Route path="/progress-dashboard" element={<ProgressDashboard />} />
+        <Route path="/rewards-badges" element={<RewardsBadges />} />
+
+        <Route path="/create-lesson" element={<CreateLesson />} />
       </Routes>
 
       {/* Render the footer */}
