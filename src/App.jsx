@@ -20,6 +20,7 @@ import ProgressDashboard from "./components/student/ProgressDashboard";
 import RewardsBadges from "./components/student/RewardsBadges";
 
 import CreateLesson from "./components/instructor/CreateLesson";
+import TextToSpeech from "./components/TextToSpeech";
 
 // Define the main App component
 function App() {
@@ -51,6 +52,8 @@ function App() {
 
         {/* Route for the testimonial page */}
         <Route path="/testimonial" element={<Testimonial />} />
+
+        <Router path="/text-to-speech" element={<TextToSpeech />} />
 
         {/* Learning platform routes */}
         <Route path="/learning-pathways" element={<LearningPathways />} />
