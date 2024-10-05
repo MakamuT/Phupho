@@ -1,131 +1,84 @@
-import React from "react";
-import {
-  MDBContainer,
-  MDBCol,
-  MDBRow,
-  MDBBtn,
-  MDBIcon,
-  MDBInput,
-  MDBCheckbox,
-} from "mdb-react-ui-kit";
+import React, { useState } from 'react';
 
-function App() {
+const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!email.includes('@')) {
+      setError('Please enter a valid email.');
+    } else if (password.length < 6) {
+      setError('Password must be at least 6 characters long.');
+    } else {
+      setError(''); // Clear error
+      alert('Login successful!');
+    }
+  };
+
   return (
-    <MDBContainer fluid className="p-3 my-5 h-custom">
-      <MDBRow>
-        <MDBCol col="10" md="6">
-          <img
-            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-            class="img-fluid"
-            alt="Sample image"
-          />
-        </MDBCol>
-
-        <MDBCol col="4" md="6">
-          <div className="d-flex flex-row align-items-center justify-content-center">
-            <p className="lead fw-normal mb-0 me-3">Sign in with</p>
-
-            <MDBBtn floating size="md" tag="a" className="me-2">
-              <MDBIcon fab icon="facebook-f" />
-            </MDBBtn>
-
-            <MDBBtn floating size="md" tag="a" className="me-2">
-              <MDBIcon fab icon="twitter" />
-            </MDBBtn>
-
-            <MDBBtn floating size="md" tag="a" className="me-2">
-              <MDBIcon fab icon="linkedin-in" />
-            </MDBBtn>
-          </div>
-
-          <div className="divider d-flex align-items-center my-4">
-            <p className="text-center fw-bold mx-3 mb-0">Or</p>
-          </div>
-
-          <MDBInput
-            wrapperClass="mb-4"
-            label="Email address"
-            id="formControlLg"
-            type="email"
-            size="lg"
-          />
-          <MDBInput
-            wrapperClass="mb-4"
-            label="Password"
-            id="formControlLg"
-            type="password"
-            size="lg"
-          />
-
-          <div className="d-flex justify-content-between mb-4">
-            <MDBCheckbox
-              name="flexCheck"
-              value=""
-              id="flexCheckDefault"
-              label="Remember me"
+    <div className="flex justify-center items-center min-h-screen bg-[#fcf3e3]">
+      <div className="w-96 bg-white rounded-2xl p-8 shadow-lg">
+        <img
+          src="Phupho.png"
+          alt="Logo"
+          width="160px"
+          height="155px"
+          className="mx-auto mb-6"
+        />
+        <h2 className="text-3xl text-[#013d5a] text-center mb-6">Login</h2>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="relative">
+            <input
+              type="text"
+              className="w-full py-3 pl-10 pr-4 border-2 border-[#708c69] rounded-full outline-none focus:border-[#bdd3ce] transition"
+              placeholder="Enter email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
             />
-            <a href="!#" style{{ color: '#708c69'}}>Forgot password?</a>
+            <i className="fas fa-user-circle absolute top-1/2 left-4 transform -translate-y-1/2 text-[#708c69]" />
           </div>
-
-          <div className="text-center text-md-start mt-4 pt-2">
-            <MDBBtn className="mb-0 px-5" size="lg">
-              Login
-            </MDBBtn>
-            <p className="small fw-bold mt-2 pt-1 mb-2">
-              Don't have an account?{" "}
-              <a href="#!" className="link-danger" style={{ color: '#708c69' }}>
-                Register
-              </a>
-            </p>
+          <div className="relative">
+            <input
+              type="password"
+              className="w-full py-3 pl-10 pr-4 border-2 border-[#708c69] rounded-full outline-none focus:border-[#bdd3ce] transition"
+              placeholder="Enter password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <i className="fas fa-lock absolute top-1/2 left-4 transform -translate-y-1/2 text-[#708c69]" />
           </div>
-        </MDBCol>
-      </MDBRow>
-
-      <div className="d-flex flex-column flex-md-row text-center text-md-start justify-content-between py-4 px-4 px-xl-5 bg-primary">
-        <div className="text-#708c69 mb-3 mb-md-0">
-          Copyright © 2020. All rights reserved.
-        </div>
-
-        <div>
-          <MDBBtn
-            tag="a"
-            color="none"
-            className="mx-3"
-            style={{ color: "white" }}
-          >
-            <MDBIcon fab icon="facebook-f" size="md" />
-          </MDBBtn>
-
-          <MDBBtn
-            tag="a"
-            color="none"
-            className="mx-3"
-            style={{ color: "white" }}
-          >
-            <MDBIcon fab icon="twitter" size="md" />
-          </MDBBtn>
-
-          <MDBBtn
-            tag="a"
-            color="none"
-            className="mx-3"
-            style={{ color: "white" }}
-          >
-            <MDBIcon fab icon="google" size="md" />
-          </MDBBtn>
-
-          <MDBBtn
-            tag="a"
-            color="none"
-            className="mx-3"
-            style={{ color"white" }}
-          >
-            <MDBIcon fab icon="linkedin-in" size="md" />
-          </MDBBtn>
+          <div>
+            <button
+              type="submit"
+              className="w-full py-3 bg-[#bdd3ce] text-[#fcf3e3] rounded-full font-bold text-xl transition hover:shadow-md"
+            >
+              Log In
+            </button>
+          </div>
+        </form>
+        {error && <div className="text-red-500 text-center mt-4">{error}</div>}
+        <div className="mt-6 text-center space-y-2">
+          <p>
+            Don't have an account?{' '}
+            <a href="register.html" className="text-red-500 hover:text-[#013d5a] font-bold transition">
+              Register
+            </a>
+          </p>
+          <p>
+            Get Started{' '}
+            <a href="key-features.html" className="text-red-500 hover:text-[#013d5a] font-bold transition">
+              Click Here To Start
+            </a>
+          </p>
         </div>
       </div>
-    </MDBContainer>
+    </div>
   );
-}
+};
 
-export default App;
+export default Login;

@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+
+        body{
+            background: #fcf3e3;
+        }
+        #login {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh;
+            margin-top: 75px;
+        }
+        .login-container {
+            width: 350px;
+            display: flex;
+            border-radius: 15px;
+            flex-direction: column;
+            padding: 0 30px 0 30px;
+            box-shadow: 5px 5px 15px 10px #bdd3ce;
+            transform: translate(5%, 20%);
+        }
+        .login-container span {
+            color: #013d5a;
+            font-size: 30px;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0 10px 0;
+        }
+        .header {
+            color: #013d5a; /* Added color */
+            font-size: 30px;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0 10px 0;
+        }
+        .login-container i {
+            position: relative;
+            top: -34px;
+            left: 17px;
+            color: #708c69;
+        }
+        .login-container .input-field {
+            display: flex;
+            flex-direction: column;
+        }
+        .login-container .input {
+            height: 45px;
+            width: 87%;
+            border: 0;
+            outline: none;
+            border: 3px solid #708c69;
+            border-radius: 30px;
+            color: black;
+            padding: 0 0 0 45px;
+            background: none;
+        }
+        .login-container .submit {
+            color: #fcf3e3;
+            background-color: #bdd3ce;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 25px;
+            height: 45px;
+            outline: none;
+            margin-left: 55px;
+            width: 50%;
+            transition: 0.3s;
+        }
+        .submit:hover {
+            box-shadow: 1px 5px 7px 1px rgba(253, 115, 115, 0.2);
+        }
+        .bottom {
+            display: flex;
+            flex-direction: column;
+            margin-top: 10px;
+        }
+        .bottom a {
+            text-decoration: none;
+            color: #ff4747;
+        }
+        .bottom a:hover {
+            color: #013d5a;
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body>
+    <div id="login">
+        <div class="login-container">
+             <img src="Phupho.png" alt="" width="160px" height="155px" style="align-self: center;">
+            <span class="header">Login</span>
+            <form id="loginForm">
+                <div class="input-field">
+                    <input type="text" class="input" placeholder="Enter email" id="email" required>
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="input-field">
+                    <input type="password" class="input" placeholder="Enter password" id="password" required>
+                    <i class="fas fa-lock"></i>
+                </div>
+                <div class="input-field">
+                    <input type="submit" class="submit" id="logIn" value="Log In">
+                </div>
+            </form>
+            <div id="error" style="color: red;"></div>
+            <div class="bottom">
+                <p>Don't have an account? <a href="register.html">Register</a></p>
+                <p>Get Started <a href="key-features.html">Click Here To Start</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission for demo purposes
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorDiv = document.getElementById('error');
+
+            if (!email.includes('@')) {
+                errorDiv.textContent = 'Please enter a valid email.';
+            } else if (password.length < 6) {
+                errorDiv.textContent = 'Password must be at least 6 characters long.';
+            } else {
+                errorDiv.textContent = ''; // Clear error
+                alert('Login successful!'); // Placeholder for form submission handling
+            }
+        });
+    </script>
+</body>
+</html>
